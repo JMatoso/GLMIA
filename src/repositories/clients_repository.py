@@ -92,7 +92,7 @@ def __insert_client():
             continue
         
         phone = input("Telefone: ")
-        if(Validations.isnumber(phone) == False):
+        if(Validations.isvalidphone(phone) == False):
             continue
         
         genre = input("Género: ")
@@ -162,10 +162,10 @@ def __generate_client_table(values):
     table.add_column("Nome", style="cyan")
     table.add_column("Genêro", justify="left", style="white")
     table.add_column("Nascimento", justify="left", style="white", no_wrap=True)
-    table.add_column("Email", justify="right", style="white")
-    table.add_column("Telefone", justify="right", style="white")
-    table.add_column("Endereço", justify="right", style="white")
-    table.add_column("Departamento", justify="right", style="white")
+    table.add_column("Email", justify="left", style="white")
+    table.add_column("Telefone", justify="left", style="white")
+    table.add_column("Endereço", justify="left", style="white")
+    table.add_column("Departamento", justify="left", style="white")
     
     for x in sorted(values, key=lambda x: x.get_name()):
         table.add_row(str(x.get_id()), 

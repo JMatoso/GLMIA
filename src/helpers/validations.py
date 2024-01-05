@@ -17,6 +17,18 @@ class Validations:
             print("[red]O valor introduzido não é um texto válido![/red]\n")
             return False
         return True
+    
+    @staticmethod
+    def isvalidphone(value):
+        if Validation.isnumber(value) == False :
+            return False
+        if len(value) < 9 :
+            print("[red]O número de telefone precisa ter no mínimo 9 dígitos![/red]")
+            return False
+        elif len(value) > 15 :
+            print("[red]O número de telefone precisa ter no máximo 15 dígitos![/red]")
+            return False
+        return True
         
     @staticmethod
     def isvalidemail(value):
