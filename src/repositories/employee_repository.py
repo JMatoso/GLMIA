@@ -61,7 +61,7 @@ def __insert_employee():
         if(Validations.isvalidphone(phone) == False):
             continue
         
-        genre = input("Género: ")
+        genre = DataContext.get_genre()
         
         salary = input("Salário: ")
         if(Validations.notempty(salary) == False):
@@ -111,7 +111,7 @@ def __delete():
 def __update():
     Helper.splash("Alterar Funcionário", "Gestão de Funcionários")
     Helper.new_line()
-    id = input("Id funcionário a alterar > ")
+    id = input("Id do funcionário a alterar > ")
     if(Validations.isnumber(id) == False):
         Helper.system_pause()
         __update()

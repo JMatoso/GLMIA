@@ -1,7 +1,6 @@
 [
     {
         "id": 1361,
-        "created": "2024-01-05T16:23:16.707196",
         "name": "Joe Doe",
         "email": "joedoe@email.com",
         "phone": "987654321",
@@ -12,7 +11,6 @@
     },
     {
         "id": 8984,
-        "created": "2024-01-05T16:23:16.707196",
         "name": "Ava Lovelace",
         "email": "avalovelace@email.dev",
         "phone": "987654348",
@@ -23,18 +21,16 @@
     },
     {
         "id": 9052,
-        "created": "2024-01-05T16:23:16.707196",
         "name": "Admin Dev",
         "email": "sysadmindev@email.dev",
         "phone": "924586543",
-        "genre": "Non",
+        "genre": "Confuso",
         "birthdate": "01/01/2024",
         "address": "System",
         "dept": "Desenvolvimento"
     },
     {
         "id": 7220,
-        "created": "2024-01-05T16:23:16.707196",
         "name": "Bia Cardoso",
         "email": "biacardoso@email.com",
         "phone": "987654213",
@@ -45,7 +41,6 @@
     },
     {
         "id": 1526,
-        "created": "2024-01-05T16:23:16.707196",
         "name": "Leonardo Ferreira",
         "email": "leonardoferreira@gmail.com",
         "phone": "987654321",
@@ -56,7 +51,6 @@
     },
     {
         "id": 4968,
-        "created": "2024-01-05T16:23:16.707196",
         "name": "Elizabeth Vicente",
         "email": "elivicente@gmail.com",
         "phone": "976546220",
@@ -67,18 +61,16 @@
     },
     {
         "id": 3993,
-        "created": "2024-01-05T16:23:16.707196",
         "name": "Cliente Alterado",
         "email": "changed@client.com",
         "phone": "912345719",
-        "genre": "Binarie",
+        "genre": "Confuso",
         "birthdate": "09/10/2005",
         "address": "Ainda Sem Morada",
         "dept": "Ainda Sem Departamento"
     },
     {
         "id": 4176,
-        "created": "2024-01-05T16:23:16.707196",
         "name": "Amazônia",
         "email": "amazonia@forest.com",
         "phone": "945683745",
@@ -86,5 +78,15 @@
         "birthdate": "01/01/1990",
         "address": "Amazônia, Brasil",
         "dept": "Natureza"
+    },
+    {
+        "id": 3795,
+        "name": "Bélgica Europa",
+        "email": "belgicaeuropa@email.ue",
+        "phone": "987654321",
+        "genre": "Feminino",
+        "birthdate": "01/01/2000",
+        "address": "Europa",
+        "dept": "País"
     }
 ]

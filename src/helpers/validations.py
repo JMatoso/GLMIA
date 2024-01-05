@@ -12,7 +12,10 @@ class Validations:
             return False
             
     @staticmethod
-    def isvalidtext(value, allow_empty = False):
+    def isvalidtext(value, can_be_empty = False):
+        if can_be_empty == False:
+            if Validations.notempty(value) == False:
+                return False
         if (all(text.isalpha() for text in value.split())) == False:
             print("[red]O valor introduzido não é um texto válido![/red]\n")
             return False

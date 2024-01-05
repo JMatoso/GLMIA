@@ -95,7 +95,7 @@ def __insert_client():
         if(Validations.isvalidphone(phone) == False):
             continue
         
-        genre = input("Género: ")
+        genre = DataContext.get_genre()
         
         birthdate = input("Data de Nascimento (dia/mês/ano): ")
         if(Validations.isvaliddate(birthdate) == False):
@@ -170,7 +170,7 @@ def __generate_client_table(values):
         table.add_row(str(x.get_id()), 
                       x.get_name(), 
                       x.get_genre(), 
-                      x.get_birthdate(), 
+                      Helper.to_date(x.get_birthdate()), 
                       x.get_email(), 
                       x.get_phone(), 
                       x.get_address(),                      

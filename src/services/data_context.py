@@ -46,3 +46,18 @@ class DataContext:
         if Validations.isempty(value) == True:
             return data
         return list(filter(lambda x: x.get_name() == value or x.get_dept() == value, data))
+    
+    @staticmethod
+    def get_genre():
+        choice = input("Género [M/F] (qualquer outro para confuso): ")
+        choice = choice.upper().strip()
+        
+        if choice == "M":
+            print("Masculino\n")
+            return "Masculino"
+        elif choice == "F":
+            print("Feminino\n")
+            return "Feminino"
+        else:
+            print("Confuso\n")
+            return "Confuso"

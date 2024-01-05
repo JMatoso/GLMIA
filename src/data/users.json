@@ -1,0 +1,14 @@
+[
+    {
+        "id": 4364,
+        "name": "Matoso",
+        "email": "matoso@sys.com",
+        "role": "USER"
+    },
+    {
+        "id": 5812,
+        "name": "Admin",
+        "email": "admin@sys.com",
+        "role": "ADMIN"
+    }
+]

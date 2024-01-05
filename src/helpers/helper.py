@@ -2,6 +2,7 @@ import os
 import platform
 
 from time import sleep
+from datetime import datetime
 
 from rich import print
 from rich.text import Text
@@ -36,3 +37,12 @@ class Helper:
     def to_currency(value):
         currency = format(float(value), ',.2f')
         return currency + "€"
+    
+    @staticmethod
+    def to_date(value):
+        try:
+            date = datetime.strptime(value, '%d/%m/%Y')
+            return str(date.strftime('%b %d, %Y'))
+        except:
+            return value
+    
