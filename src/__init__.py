@@ -4,13 +4,13 @@ from helpers.validations import Validations
 from repositories.clients_repository import clients_menu
 
 def load():
-    start()
+    __start()
     
-def start():
+def __start():
     Helper.splash()
-    main_menu()
+    __main_menu()
     
-def main_menu():
+def __main_menu():
     Helper.new_line()
     print("1. Gestão de [cyan]Clientes[/cyan]")
     print("2. Gestão de [cyan]Utilizadores[/cyan]")
@@ -21,7 +21,7 @@ def main_menu():
     choice = input("> ")
     if Validations.isnumber(choice) == False:
         Helper.system_pause()
-        start()
+        __start()
         return
     
     match choice:
@@ -38,7 +38,7 @@ def main_menu():
         case _:
             print("[red]Opção inválida![/red]")
             Helper.system_pause()
-            start()
+            __start()
     
 if __name__ == "__main__":
     load()
