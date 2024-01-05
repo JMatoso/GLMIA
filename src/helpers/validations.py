@@ -4,7 +4,7 @@ from datetime import datetime
 
 class Validations:
     @staticmethod
-    def IsNumber(value):
+    def isnumber(value):
         if value.isdigit():
             return True
         else:
@@ -12,14 +12,14 @@ class Validations:
             return False
             
     @staticmethod
-    def IsValidText(value, allow_empty = False):
+    def isvalidtext(value, allow_empty = False):
         if (all(text.isalpha() for text in value.split())) == False:
             print("[red]O valor introduzido não é um texto válido![/red]\n")
             return False
         return True
         
     @staticmethod
-    def IsValidEmail(value):
+    def isvalidemail(value):
         if len(value.strip()) <= 0 or value.isspace() or value.strip() == "" or value == None:
             return False
         
@@ -32,7 +32,7 @@ class Validations:
             return False
         
     @staticmethod
-    def IsValidDate(value):
+    def isvaliddate(value):
         try:
             datetime.strptime(value, '%d/%m/%Y')
             return True
@@ -41,14 +41,20 @@ class Validations:
             return False
         
     @staticmethod
-    def IsNotEmpty(value):
+    def notempty(value):
         if len(value.strip()) <= 0 or value.isspace() or value.strip() == "" or value == None:
             print("[red]O valor introduzido não pode ser vazio![/red]\n")
             return False
         return True
     
     @staticmethod
-    def Normalize(value, isTitle = True):
+    def isempty(value):
+        if len(value.strip()) <= 0 or value.isspace() or value.strip() == "" or value == None:
+            return True
+        return False
+    
+    @staticmethod
+    def normalize(value, isTitle = True):
         text = value.strip()
         text = ' '.join(text.split())
         if isTitle:

@@ -10,24 +10,24 @@ from rich.panel import Panel
 
 class Helper:
     @staticmethod
-    def Splash(text = "Gestão do Laboratório de Monitorização e Investigação Ambiental"):
-        Helper.Clear()
+    def splash(text = "Gestão do Laboratório de Monitorização e Investigação Ambiental"):
+        Helper.clear()
         print(Panel(Align.center(Text("\n{}\n".format(text))), title="AED", style="bold white"))
     
     @staticmethod
-    def Clear():
+    def clear():
         if platform.system() == "Windows":
             os.system('cls')  
         else:
             os.system('clear')
 
     @staticmethod
-    def Pause():
+    def pause():
         input("\nPrima [ENTER] para continuar...")
         
-    def SystemPause(seconds = 2):
+    def system_pause(seconds = 2):
         sleep(seconds)
         
     @staticmethod
-    def NewLine():
+    def new_line():
         print("\n")

@@ -2,13 +2,15 @@ import random
 from datetime import datetime
 
 class Client():
-    def __init__(self, name, email, phone, genre, birthdate, address, dept):
-        self.id = random.randint(1, 999999)
+    def __init__(self, client_id, name, email, phone, genre, birthdate, address, dept):
+        if(client_id == 0):
+            self.id = random.randint(1, 999999)
+        else:
+            self.id = client_id
         self.created = datetime.now()
         self.name = name
         self.email = email
         self.phone = phone
-        self.genre = genre
         self.birthdate = birthdate
         self.address = address
         self.dept = dept
@@ -60,6 +62,7 @@ class Client():
     @classmethod
     def from_dict(cls, data):
         return cls(
+            data['id'],
             data['name'],
             data['email'],
             data['phone'],

@@ -1,39 +1,44 @@
 from rich import print
 from helpers.helper import Helper
 from helpers.validations import Validations
-from controllers.clients_controller import ClientsMenu
+from repositories.clients_repository import clients_menu
 
-def Load():
-    Start()
+def load():
+    start()
     
-def Start():
-    Helper.Splash()
-    MainMenu()
+def start():
+    Helper.splash()
+    main_menu()
     
-def MainMenu():
-    print("\n[bold]1. Gestão de [cyan]Clientes[/cyan][/bold]")
-    print("[bold]2. Gestão de [cyan]Utilizadores[/cyan][/bold]")
-    print("[bold]3. Gestão de [cyan]Funcionários[/cyan][/bold]")
-    print("[bold]4. Gestão de [cyan]Análises[/cyan][/bold]")
-    print("[bold]0. [red]Sair[/red][/bold]")
+def main_menu():
+    Helper.new_line()
+    print("1. Gestão de [cyan]Clientes[/cyan]")
+    print("2. Gestão de [cyan]Utilizadores[/cyan]")
+    print("3. Gestão de [cyan]Funcionários[/cyan]")
+    print("4. Gestão de [cyan]Análises[/cyan]")
+    print("0. [red]Sair[/red]")
     
     choice = input("> ")
-    if Validations.IsNumber(choice) == False:
-        Helper.SystemPause()
-        Start()
+    if Validations.isnumber(choice) == False:
+        Helper.system_pause()
+        start()
         return
     
     match choice:
         case "1":
-            ClientsMenu()
+            clients_menu()
         case "2":
-            print("Análises")
+            print("Utilizadores")
         case "3":
-            print("Sair")
+            print("Funcionários")
+        case "4":
+            print("Análises")
+        case "0":
+            print("Até breve!")
         case _:
             print("[red]Opção inválida![/red]")
-            Helper.SystemPause()
-            Start()
+            Helper.system_pause()
+            start()
     
 if __name__ == "__main__":
-    Load()
+    load()

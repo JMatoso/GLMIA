@@ -1,35 +1,68 @@
 [
     {
         "id": 136135,
-        "created": "2024-01-05T01:18:18.563730",
-        "name": "Joe",
-        "email": "joe@doe.dev",
+        "created": "2024-01-05T03:27:12.206270",
+        "name": "Joe Doe",
+        "email": "joedoe@email.com",
         "phone": "987654321",
-        "genre": "M",
+        "genre": "Masculino",
         "birthdate": "12/12/2000",
-        "address": "Mundo",
-        "dept": "Mundo"
+        "address": "Maianga, Angola",
+        "dept": "Investigações"
     },
     {
         "id": 898419,
-        "created": "2024-01-05T01:18:18.563730",
-        "name": "Ava",
-        "email": "ava@lovelace.dev",
+        "created": "2024-01-05T03:27:12.206270",
+        "name": "Ava Lovelace",
+        "email": "avalovelace@email.dev",
         "phone": "987654",
-        "genre": "F",
+        "genre": "Feminino",
         "birthdate": "12/12/2000",
-        "address": "Mundo",
-        "dept": "Dev"
+        "address": "Porto, Portugal",
+        "dept": "Desenvolvimento"
     },
     {
         "id": 90527,
-        "created": "2024-01-05T01:18:57.115337",
-        "name": "Dev",
-        "email": "dev@dev.dev",
+        "created": "2024-01-05T03:27:12.206270",
+        "name": "Admin Dev",
+        "email": "sysadmindev@email.dev",
         "phone": "6543",
         "genre": "Non",
         "birthdate": "01/01/2024",
-        "address": "Code",
-        "dept": "Bug"
+        "address": "System",
+        "dept": "Desenvolvimento"
+    },
+    {
+        "id": 722044,
+        "created": "2024-01-05T03:27:12.206270",
+        "name": "Bia Cardoso",
+        "email": "biacardoso@email.com",
+        "phone": "98765421",
+        "genre": "Feminino",
+        "birthdate": "04/07/2001",
+        "address": "Lisboa, Portugal",
+        "dept": "Finanças"
+    },
+    {
+        "id": 152647,
+        "created": "2024-01-05T03:27:12.206270",
+        "name": "Leonardo Ferreira",
+        "email": "leonardoferreira@gmail.com",
+        "phone": "987654321",
+        "genre": "Masculino",
+        "birthdate": "08/10/1999",
+        "address": "São Paulo, Brasil",
+        "dept": "Finanças"
+    },
+    {
+        "id": 496879,
+        "created": "2024-01-05T03:28:43.289063",
+        "name": "Elizabeth Vicente",
+        "email": "elivicente@gmail.com",
+        "phone": "976545622",
+        "genre": "Feminino",
+        "birthdate": "10/02/2005",
+        "address": "São Benedito, Brasil",
+        "dept": "Recursos Humanos"
     }
 ]

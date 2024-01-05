@@ -8,22 +8,22 @@ class DataContext:
     def load_json(path):
         try:
             if os.path.isfile(path):
-                with open(path, 'r') as file:
+                with open(path, 'r', encoding='utf-8') as file:
                     data = json.load(file)
                 return data
             else:
                 DataContext.save_json(path, [])
                 return []
-        except:
-            print("\n[red]Ocorreu um erro ao carregar os dados, tente novamente![/red]")
+        except Exception as error:
+            print("\n[red]Ocorreu um erro ao carregar os dados: {}![/red]\n".format(error))
             return []
 
     @staticmethod
     def save_json(path, data):
         try:
-            with open(path, 'w') as file:
+            with open(path, 'w', encoding='utf-8') as file:
                 data_to_save = [item.to_dict() for item in data]            
-                json.dump(data_to_save, file, indent=4)
+                json.dump(data_to_save, file, indent=4, ensure_ascii=False)
                 print("\n[green]Dados guardados com sucesso![/green]")
                 return True
         except Exception as error:
