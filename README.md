@@ -1,5 +1,4 @@
-# glmia
-Gestão do Laboratório de Monitorização e Investigação Ambiental (Projeto Escolar)
+# GLMIA - Gestão do Laboratório de Monitorização e Investigação Ambiental (Projeto Escolar)
 
 ![Arquitetura do Projeto](https://github.com/JMatoso/glmia/blob/main/assets/image.png)
 
