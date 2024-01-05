@@ -24,6 +24,7 @@ def clients_menu():
     print("2. [red]Eliminar[/red]")
     print("3. [cyan]Alterar[/cyan]")
     print("4. [cyan]Filtrar[/cyan]")
+    print("5. [cyan]Tipo de Cliente[/cyan]")
     print("0. [red]Voltar[/red] ao Menu Inicial")
     
     choice = input("> ")
@@ -38,11 +39,13 @@ def clients_menu():
         case "2":
             __delete()
         case "3":
-            print("Alterar")
+            __update()
         case "4":
             __search()
+        case "5":
+            print("Tipo de Cliente")
         case "0":
-            print("Sair")
+            print("Voltando ao Menu Inicial...")
         case _:
             print("[red]Opção inválida![/red]")
             Helper.system_pause()
@@ -50,7 +53,7 @@ def clients_menu():
     
 def __delete():
     Helper.splash("Eliminar Cliente")
-    
+    Helper.new_line()
     id = input("Id do cliente a eliminar > ")
     if(Validations.isnumber(id) == False):
         Helper.system_pause()
@@ -72,16 +75,14 @@ def __delete():
     
 def __search():
     Helper.splash("Encontrar Clientes")
-    
+    Helper.new_line()
     keyword = input("Departamento, Nome (ou em branco para listar todos) > ")    
     __generate_client_table(__filter_client_by_name_or_departament(keyword))
     
     Helper.pause()
     clients_menu()
 
-def __insert():
-    Helper.new_line()
-    Helper.splash("Inserir Cliente")
+def __insert_client():
     success = False
     
     while success == False:
@@ -111,18 +112,52 @@ def __insert():
         if(Validations.isvalidtext(dept, True) == False):
             continue
         
-        CLIENTS.append(Client(0, Validations.normalize(name),
+        return Client(0, Validations.normalize(name),
                               email.lower().strip(), 
                               phone, 
                               Validations.normalize(genre), 
                               birthdate, 
                               Validations.normalize(address), 
-                              Validations.normalize(dept)))
-        
-        success = DataContext.save_json(Constants.CLIENT_PATH, CLIENTS)
-        Helper.system_pause()
+                              Validations.normalize(dept))
+    
+def __insert():
+    Helper.splash("Inserir Cliente")
+    Helper.new_line()
+    CLIENTS.append(__insert_client())
+    
+    success = DataContext.save_json(Constants.CLIENT_PATH, CLIENTS)
+    Helper.system_pause()
     
     clients_menu()
+
+def __update():
+    Helper.splash("Alterar Cliente")
+    Helper.new_line()
+    id = input("Id do cliente a alterar > ")
+    if(Validations.isnumber(id) == False):
+        Helper.system_pause()
+        __update()
+        return
+    
+    old_client = __get_client_by_id(int(id))
+    if old_client == None:
+        print("[red]O cliente que pretende alterar não existe![/red]")
+        Helper.system_pause()
+        clients_menu()
+        return
+    
+    new_client = __insert_client()
+    new_client.id = old_client.get_id()
+    new_client.created = old_client.get_created()
+    
+    CLIENTS.remove(old_client)
+    CLIENTS.append(new_client)
+    
+    if DataContext.save_json(Constants.CLIENT_PATH, CLIENTS) == True:
+        print("[green]Cliente alterado com sucesso![/green]")
+    Helper.system_pause()
+    clients_menu()
+    
 
 def __filter_client_by_name_or_departament(value):
     if Validations.isempty(value) == True:
