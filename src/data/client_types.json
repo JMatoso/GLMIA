@@ -1,16 +1,16 @@
 [
     {
-        "id": 199844,
+        "id": 1998,
         "name": "Vip",
         "description": "Clientes vips."
     },
     {
-        "id": 530453,
+        "id": 5304,
         "name": "Normal",
         "description": "Cliente normal."
     },
     {
-        "id": 213456,
+        "id": 2134,
         "name": "Financiador",
         "description": "Clientes que financiam pesquisas."
     }

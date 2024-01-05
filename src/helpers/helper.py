@@ -31,3 +31,8 @@ class Helper:
     @staticmethod
     def new_line():
         print("\n")
+        
+    @staticmethod
+    def to_currency(value):
+        currency = format(float(value), ',.2f')
+        return currency + "€"

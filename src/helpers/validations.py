@@ -20,7 +20,7 @@ class Validations:
     
     @staticmethod
     def isvalidphone(value):
-        if Validation.isnumber(value) == False :
+        if Validations.isnumber(value) == False :
             return False
         if len(value) < 9 :
             print("[red]O número de telefone precisa ter no mínimo 9 dígitos![/red]")

@@ -144,7 +144,6 @@ def __update():
     Helper.new_line()
     new_client = __insert_client()
     new_client.id = old_client.get_id()
-    new_client.created = old_client.get_created()
     
     CLIENTS.remove(old_client)
     CLIENTS.append(new_client)

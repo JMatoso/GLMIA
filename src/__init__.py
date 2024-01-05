@@ -2,6 +2,7 @@ from rich import print
 from helpers.helper import Helper
 from helpers.validations import Validations
 from repositories.clients_repository import clients_menu
+from repositories.employee_repository import employees_menu
 
 def load():
     __start()
@@ -30,7 +31,7 @@ def __main_menu():
         case "2":
             print("Utilizadores")
         case "3":
-            print("Funcionários")
+            employees_menu()
         case "4":
             print("Análises")
         case "0":

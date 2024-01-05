@@ -1,5 +1,4 @@
 import random
-from datetime import datetime
 
 class Client():
     def __init__(self, client_id, name, email, phone, genre, birthdate, address, dept):
@@ -7,7 +6,6 @@ class Client():
             self.id = random.randint(1000, 9999)
         else:
             self.id = client_id
-        self.created = datetime.now()
         self.name = name
         self.email = email
         self.phone = phone
@@ -30,9 +28,6 @@ class Client():
     
     def get_role(self):
         return self.role
-    
-    def get_created(self):
-        return self.created
         
     def get_birthdate(self):
         return self.birthdate
@@ -49,7 +44,6 @@ class Client():
     def to_dict(self):
         return {
             'id': self.id,
-            'created': self.created.isoformat(),
             'name': self.name,
             'email': self.email,
             'phone': self.phone,

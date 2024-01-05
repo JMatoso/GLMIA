@@ -1,0 +1,11 @@
+[
+    {
+        "id": 8468,
+        "name": "José Matoso",
+        "email": "josematoso@email.com",
+        "phone": "987654321",
+        "genre": "Masculino",
+        "salary": "5000",
+        "dept": "Desenvolvimento"
+    }
+]
