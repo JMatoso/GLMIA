@@ -10,9 +10,9 @@ from rich.panel import Panel
 
 class Helper:
     @staticmethod
-    def splash(text = "Gestão do Laboratório de Monitorização e Investigação Ambiental"):
+    def splash(text = "Gestão do Laboratório de Monitorização e Investigação Ambiental", title = "AED"):
         Helper.clear()
-        print(Panel(Align.center(Text("\n{}\n".format(text))), title="AED", style="bold white"))
+        print(Panel(Align.center(Text("\n{}\n".format(text))), title=title, style="bold white"))
     
     @staticmethod
     def clear():

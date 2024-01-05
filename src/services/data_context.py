@@ -2,6 +2,7 @@ import os
 import json
 
 from rich import print
+from helpers.validations import Validations
 
 class DataContext:
     @staticmethod
@@ -29,3 +30,19 @@ class DataContext:
         except Exception as error:
             print("[red]Ocorreu um erro ao guardar os dados: {}[/red]\n".format(error))
             return False
+        
+    @staticmethod
+    def filter_type_by_name(value, data):
+        if Validations.isempty(value) == True:
+            return data
+        return list(filter(lambda x: x.get_name() == value, data))
+
+    @staticmethod
+    def get_by_id(id, data):    
+        return next((x for x in data if x.get_id() == id), None)
+    
+    @staticmethod
+    def filter_by_name_or_departament(value, data):
+        if Validations.isempty(value) == True:
+            return data
+        return list(filter(lambda x: x.get_name() == value or x.get_dept() == value, data))

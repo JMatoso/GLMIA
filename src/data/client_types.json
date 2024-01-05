@@ -1,0 +1,12 @@
+[
+    {
+        "id": 199844,
+        "name": "Vip",
+        "description": "Clientes vips."
+    },
+    {
+        "id": 530453,
+        "name": "Normal",
+        "description": "Cliente normal."
+    }
+]

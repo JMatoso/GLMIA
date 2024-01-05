@@ -12,10 +12,10 @@ def __start():
     
 def __main_menu():
     Helper.new_line()
-    print("1. Gestão de [cyan]Clientes[/cyan]")
-    print("2. Gestão de [cyan]Utilizadores[/cyan]")
-    print("3. Gestão de [cyan]Funcionários[/cyan]")
-    print("4. Gestão de [cyan]Análises[/cyan]")
+    print("1. Gestão de [bold]Clientes[/bold]")
+    print("2. Gestão de [bold]Utilizadores[/bold]")
+    print("3. Gestão de [bold]Funcionários[/bold]")
+    print("4. Gestão de [bold]Análises[/bold]")
     print("0. [red]Sair[/red]")
     
     choice = input("> ")

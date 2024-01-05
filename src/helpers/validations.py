@@ -59,6 +59,8 @@ class Validations:
         text = ' '.join(text.split())
         if isTitle:
             text = text.title()
+        else:
+            text = text.capitalize()
         return text
     
         
