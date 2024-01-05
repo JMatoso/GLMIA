@@ -7,7 +7,7 @@ class User:
         self.email = email
         self.role = "USER" #change to enum later on
         self.created = datetime.now()
-        self.id = random.randint(1, 999999)
+        self.id = random.randint(1000, 9999)
         
         if not instance(genre, Genre):
             raise ValueError('Genêro inválido.')

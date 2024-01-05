@@ -8,5 +8,10 @@
         "id": 530453,
         "name": "Normal",
         "description": "Cliente normal."
+    },
+    {
+        "id": 213456,
+        "name": "Financiador",
+        "description": "Clientes que financiam pesquisas."
     }
 ]

@@ -4,7 +4,7 @@ from datetime import datetime
 class Client():
     def __init__(self, client_id, name, email, phone, genre, birthdate, address, dept):
         if(client_id == 0):
-            self.id = random.randint(1, 999999)
+            self.id = random.randint(1000, 9999)
         else:
             self.id = client_id
         self.created = datetime.now()
