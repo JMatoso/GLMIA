@@ -1,0 +1,35 @@
+[
+    {
+        "id": 136135,
+        "created": "2024-01-05T01:18:18.563730",
+        "name": "Joe",
+        "email": "joe@doe.dev",
+        "phone": "987654321",
+        "genre": "M",
+        "birthdate": "12/12/2000",
+        "address": "Mundo",
+        "dept": "Mundo"
+    },
+    {
+        "id": 898419,
+        "created": "2024-01-05T01:18:18.563730",
+        "name": "Ava",
+        "email": "ava@lovelace.dev",
+        "phone": "987654",
+        "genre": "F",
+        "birthdate": "12/12/2000",
+        "address": "Mundo",
+        "dept": "Dev"
+    },
+    {
+        "id": 90527,
+        "created": "2024-01-05T01:18:57.115337",
+        "name": "Dev",
+        "email": "dev@dev.dev",
+        "phone": "6543",
+        "genre": "Non",
+        "birthdate": "01/01/2024",
+        "address": "Code",
+        "dept": "Bug"
+    }
+]
