@@ -177,7 +177,6 @@ def __exportToPdf():
     try:
         name = f"{analysis.get_id()}-{Helper.get_ticks_string()}.pdf"
         pdf = canvas.Canvas(name)
-        x = 720
         
         pdf.setTitle(f'Nº {analysis.get_id()}')
         pdf.setFont("Helvetica-Bold", 14)
