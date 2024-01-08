@@ -11,6 +11,8 @@ from services.data_context import DataContext
 from rich.table import Table
 from rich import print
 
+from services.email_service import Mailer
+
 from reportlab.pdfgen import canvas
 
 ANALYSIS = []
@@ -41,7 +43,9 @@ def analysis_report_menu():
     print("2. Alterar")
     print("3. Filtrar")
     print("4. [red]Eliminar[/red]")
-    print("5. Exportar para PDF")
+    print("5. Exportar Para PDF")
+    print("6. Enviar Por Email")
+    print("7. Enviar PDF Por Email")
     print("0. Voltar")
     
     choice = input("> ")
@@ -61,6 +65,10 @@ def analysis_report_menu():
             __delete()
         case "5":
             __exportToPdf()
+        case "6":
+            __sendEmail()
+        case "7":
+            __sendPdfByEmail()
         case "0":
             print("Voltando ao Menu Inicial...")
         case _:
@@ -231,7 +239,31 @@ def __exportToPdf():
         print("[red]Ocorreu um erro ao exportar o resultado![/red]")
         Helper.pause()
 
-def __generate_employee_table(values, analises, clients, client_types):
+def __sendEmail():
+    Helper.splash("Enviar Resultados Por Email", "Resultados das Análises")
+    Helper.new_line()
+    
+    while True:
+        sender = input("Email do remetente > ")
+        if Validations.isvalidemail(sender) == False:
+            continue
+        
+        pwd = input("Password do email > ")
+        if Validations.notempty(pwd) == False:
+            continue
+        
+        email = input("Email do destinatário > ")
+        if Validations.isvalidemail(email) == False:
+            continue
+    
+        mailer = Mailer(sender, pwd)
+        mailer.send(email, "Relatório de Resultado de Análise", "Em anexo encontra-se o relatório de resultado de análise.")
+        break
+
+def __sendPdfByEmail():
+    pass
+
+def __generate_employee_table(values):
     Helper.new_line()
 
     table = Table(title=f"Resultados Encontrados ({len(values)})", show_lines=True, expand=True)
