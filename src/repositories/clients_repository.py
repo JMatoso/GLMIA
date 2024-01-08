@@ -25,7 +25,7 @@ def clients_menu():
     print("3. Filtrar")
     print("4. [red]Eliminar[/red]")
     print("5. Tipo de Cliente")
-    print("0. Voltar ao Menu Inicial")
+    print("0. Voltar")
     
     choice = input("> ")
     if Validations.isnumber(choice) == False:
@@ -156,26 +156,25 @@ def __update():
 def __generate_client_table(values):
     Helper.new_line()
 
-    table = Table(title=f"Clientes Encontrados ({len(values)})", show_lines=True)
-    table.add_column("Id", justify="left", style="cyan", no_wrap=True)
+    table = Table(title=f"Clientes Encontrados ({len(values)})", show_lines=True, expand=True)
+    table.add_column("Id", justify="center", style="cyan", no_wrap=True)
     table.add_column("Nome", style="cyan")
     table.add_column("Genêro", justify="left", style="white")
     table.add_column("Nascimento", justify="left", style="white", no_wrap=True)
-    table.add_column("Email", justify="left", style="white")
     table.add_column("Telefone", justify="left", style="white")
-    table.add_column("Endereço", justify="left", style="white")
-    table.add_column("Departamento", justify="left", style="white")
+    table.add_column("Email", justify="right", style="white")
+    table.add_column("Endereço", justify="right", style="white")
+    table.add_column("Departamento", justify="right", style="white")
     
     for x in sorted(values, key=lambda x: x.get_name()):
         table.add_row(str(x.get_id()), 
                       x.get_name(), 
                       x.get_genre(), 
                       Helper.to_date(x.get_birthdate()), 
-                      x.get_email(), 
                       x.get_phone(), 
+                      x.get_email(), 
                       x.get_address(),                      
                       x.get_dept())
-    
     print(table)
     
 if __name__ == "__main__":

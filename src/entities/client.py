@@ -25,9 +25,6 @@ class Client():
     
     def get_phone(self):
         return self.phone
-    
-    def get_role(self):
-        return self.role
         
     def get_birthdate(self):
         return self.birthdate

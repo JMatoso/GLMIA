@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1017,
+        "name": "Análise Grátis",
+        "description": "Análise gratuita",
+        "price": "0"
+    },
+    {
+        "id": 2078,
+        "name": "Análise Personalizada",
+        "description": "Análise personalizada",
+        "price": "50"
+    },
+    {
+        "id": 6670,
+        "name": "Análise Parcial",
+        "description": "Análise onde o cliente paga apenas 70%",
+        "price": "10"
+    },
+    {
+        "id": 3437,
+        "name": "Análise Trimestral",
+        "description": "Análise feita a cada 3 meses",
+        "price": "7"
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "id": 2202,
+        "name": "Dor de Cabeça",
+        "description": "Dor de Cabeça",
+        "price": "2",
+        "type_analysis_id": "1017"
+    },
+    {
+        "id": 7363,
+        "name": "Febre",
+        "description": "Medição de febre",
+        "price": "5",
+        "type_analysis_id": "2078"
+    },
+    {
+        "id": 8991,
+        "name": "Tosse",
+        "description": "Alguma descrição",
+        "price": "3",
+        "type_analysis_id": "2078"
+    },
+    {
+        "id": 3337,
+        "name": "Câncer",
+        "description": "Estás morrendo",
+        "price": "50",
+        "type_analysis_id": "1017"
+    }
+]

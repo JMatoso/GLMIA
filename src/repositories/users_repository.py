@@ -23,7 +23,7 @@ def users_menu():
     print("2. Alterar")
     print("3. Filtrar")
     print("4. [red]Eliminar[/red]")
-    print("0. Voltar ao Menu Inicial")
+    print("0. Voltar")
     
     choice = input("> ")
     if Validations.isnumber(choice) == False:
@@ -128,10 +128,10 @@ def __search():
 def __generate_employee_table(values):
     Helper.new_line()
 
-    table = Table(title=f"Utilizadores Encontrados ({len(values)})", show_lines=True)
-    table.add_column("Id", justify="left", style="cyan", no_wrap=True)
+    table = Table(title=f"Utilizadores Encontrados ({len(values)})", show_lines=True, expand=True)
+    table.add_column("Id", justify="center", style="cyan", no_wrap=True)
     table.add_column("Nome", style="cyan")
-    table.add_column("Email", justify="left", style="white")
+    table.add_column("Email", justify="right", style="white")
     table.add_column("Função", justify="left", style="white")
     
     for x in sorted(values, key=lambda x: x.get_name()):
@@ -139,7 +139,6 @@ def __generate_employee_table(values):
                       x.get_name(), 
                       x.get_email(), 
                       x.get_role())
-    
     print(table)
 
 if __name__ == "__main__":

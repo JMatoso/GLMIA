@@ -48,6 +48,24 @@ class DataContext:
         return list(filter(lambda x: x.get_name() == value or x.get_dept() == value, data))
     
     @staticmethod
+    def filter_by_name_or_price(value, data):
+        if Validations.isempty(value) == True:
+            return data
+        return list(filter(lambda x: x.get_name() == value or x.get_price() == value, data))
+    
+    @staticmethod
+    def filter_by_name_price_or_id(value, data):
+        if Validations.isempty(value) == True:
+            return data
+        return list(filter(lambda x: x.get_name() == value or x.get_price() == value or x.get_type_analysis_id() == value, data))
+    
+    @staticmethod
+    def filter_analysis_request(value, data):
+        if Validations.isempty(value) == True:
+            return data
+        return list(filter(lambda x: x.get_type_analysis_id() == value or x.get_client_id() == value or x.get_client_type_id() == value or x.get_created() == value, data))
+    
+    @staticmethod
     def get_genre():
         choice = input("Género [M/F] (qualquer outro para confuso): ")
         choice = choice.upper().strip()

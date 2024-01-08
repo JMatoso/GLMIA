@@ -40,9 +40,13 @@ class Helper:
     
     @staticmethod
     def to_date(value):
-        try:
-            date = datetime.strptime(value, '%d/%m/%Y')
-            return str(date.strftime('%b %d, %Y'))
-        except:
-            return value
+        formats = ['%d/%m/%Y', '%Y-%m-%dT%H:%M:%S.%f', '%Y-%m-%d %H:%M:%S.%f']
+        for fmt in formats:
+            try:
+                date = datetime.strptime(str(value), fmt)
+                return date.strftime('%b %d, %Y - %H:%M')
+            except:
+                pass
+        return str(value)
+
     

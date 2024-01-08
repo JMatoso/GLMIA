@@ -23,7 +23,7 @@ def clients_type_menu():
     print("2. Alterar")
     print("3. Filtrar")
     print("4. [red]Eliminar[/red]")
-    print("0. Voltar ao Menu Inicial")
+    print("0. Voltar")
     
     choice = input("> ")
     if Validations.isnumber(choice) == False:
@@ -128,9 +128,9 @@ def __search():
 def __generate_client_table(values):
     Helper.new_line()
 
-    table = Table(title=f"Tipo de Clientes Encontrados ({len(values)})", show_lines=True)
+    table = Table(title=f"Tipo de Clientes Encontrados ({len(values)})", show_lines=True, expand=True)
 
-    table.add_column("Id", justify="left", style="cyan", no_wrap=True)
+    table.add_column("Id", justify="center", style="cyan", no_wrap=True)
     table.add_column("Nome", style="cyan")
     table.add_column("Descrição", justify="left", style="white")
     
@@ -138,7 +138,6 @@ def __generate_client_table(values):
         table.add_row(str(x.get_id()), 
                       x.get_name(), 
                       x.get_description())
-    
     print(table)
 
 if __name__ == "__main__":
