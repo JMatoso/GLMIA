@@ -48,5 +48,10 @@ class Helper:
             except:
                 pass
         return str(value)
+    
+    @staticmethod
+    def get_ticks_string():
+        time = datetime.now()
+        return str(int(time.timestamp() * 1e7) + 621355968000000000)
 
     

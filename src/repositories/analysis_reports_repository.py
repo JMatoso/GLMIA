@@ -11,6 +11,8 @@ from services.data_context import DataContext
 from rich.table import Table
 from rich import print
 
+from reportlab.pdfgen import canvas
+
 ANALYSIS = []
 ANALYSIS_TYPE = []
 ANALYSIS_REPORTS = []
@@ -39,6 +41,7 @@ def analysis_report_menu():
     print("2. Alterar")
     print("3. Filtrar")
     print("4. [red]Eliminar[/red]")
+    print("5. Exportar para PDF")
     print("0. Voltar")
     
     choice = input("> ")
@@ -56,6 +59,8 @@ def analysis_report_menu():
             __search()
         case "4":
             __delete()
+        case "5":
+            __exportToPdf()
         case "0":
             print("Voltando ao Menu Inicial...")
         case _:
@@ -152,6 +157,81 @@ def __search():
     Helper.pause()
     analysis_report_menu()    
 
+def __exportToPdf():
+    Helper.splash("Exportar Resultados", "Resultados das Análises")
+    Helper.new_line()
+    
+    id = input("Id do resultado a exportar para PDF > ")
+    if(Validations.isnumber(id) == False):
+        Helper.system_pause()
+        __delete()
+        return
+    
+    analysis = DataContext.get_by_id(int(id), ANALYSIS_REPORTS)
+    if analysis == None:
+        print("[red]O resultado que pretende exportar não existe![/red]")
+        Helper.system_pause()
+        analysis_report_menu()
+        return
+    
+    try:
+        name = f"{analysis.get_id()}-{Helper.get_ticks_string()}.pdf"
+        pdf = canvas.Canvas(name)
+        x = 720
+        
+        pdf.setTitle(f'Nº {analysis.get_id()}')
+        pdf.setFont("Helvetica-Bold", 14)
+        pdf.drawString(100,770, f'Relatório de Resultado de Análise ({analysis.get_id()})')
+        pdf.setFont("Helvetica-Bold", 12)
+        
+        pdf.setFont("Helvetica-Bold", 12)
+        pdf.drawString(100,724, 'Cliente')
+        client = __get_client(analysis.get_client_id())
+        
+        pdf.setFont("Helvetica", 12)
+        pdf.drawString(100,700, f'Nome: {client.get_name()}')
+        pdf.drawString(100,680, f'Nascimento: {Helper.to_date(client.get_birthdate())}')
+        pdf.drawString(100,660, f'Gênero: {client.get_genre()}')
+        pdf.drawString(100,640, f'Telefone: {client.get_phone()}')
+        pdf.drawString(100,620, f'Email: {client.get_email()}')
+        pdf.drawString(100,600, f'Endereço: {client.get_address()}')
+        pdf.drawString(100,580, f'Departamento: {client.get_dept()}')
+        
+        pdf.setFont("Helvetica-Bold", 12)
+        pdf.drawString(100,540, 'Tipo de Cliente')
+        client_type = __get_client_type(analysis.get_client_type_id())
+        
+        pdf.setFont("Helvetica", 12)
+        pdf.drawString(100,520, f'Nome: {client_type.get_name()}')
+        pdf.drawString(100,500, f'Descrição: {client_type.get_description()}')
+        
+        pdf.setFont("Helvetica-Bold", 12)
+        pdf.drawString(100,460, 'Tipo de Análise')
+        analysis_type = __get_analysis_type(analysis.get_type_analysis_id())
+        
+        pdf.setFont("Helvetica", 12)
+        pdf.drawString(100,440, f'Tipo: {analysis_type.get_name()}')
+        pdf.drawString(100,420, f'Descrição: {analysis_type.get_description()}')
+        pdf.drawString(100,400, f'Preço: {Helper.to_currency(analysis_type.get_price())}')
+        
+        pdf.setFont("Helvetica-Bold", 12)
+        pdf.drawString(100,360, 'Resultado')
+        
+        pdf.setFont("Helvetica", 12)
+        pdf.drawString(100,340, f'Descrição: {analysis.get_description()}')
+        pdf.drawString(100,320, f'Positivo: {"Sim" if analysis.get_positive() == True else "Não"}')
+        
+        pdf.drawString(100,280, f'Data: {Helper.to_date(analysis.get_created())}')
+        
+        pdf.save()
+        
+        print(f'[green]{name} criado com sucesso![/green]')
+        Helper.pause()
+    except Exception as e:
+        print(e)
+        print("[red]Ocorreu um erro ao exportar o resultado![/red]")
+        Helper.pause()
+
 def __generate_employee_table(values, analises, clients, client_types):
     Helper.new_line()
 
@@ -165,17 +245,9 @@ def __generate_employee_table(values, analises, clients, client_types):
     table.add_column("Data", justify="center", style="white", no_wrap=True)
     
     for x in sorted(values, key=lambda x: x.get_created(), reverse=True):
-        analysis_type = DataContext.get_by_id(int(x.get_type_analysis_id()), analises)
-        if analysis_type == None:
-            analysis_type = AnalysisType(0, "Não Encontrado", "Não Encontrado")
-            
-        client_type = DataContext.get_by_id(int(x.get_client_type_id()), client_types)
-        if client_type == None:
-            client_type = ClientType(0, "Não Encontrado", "")
-            
-        client = DataContext.get_by_id(int(x.get_client_id()), clients)
-        if client == None:
-            client = Client(0, "Não Encontrado", "", "", "", "", "", "")
+        analysis_type = __get_analysis_type(x.get_type_analysis_id())
+        client_type = __get_client_type(x.get_client_type_id())
+        client = __get_client(x.get_client_id())
             
         table.add_row(str(x.get_id()), 
                       "Sim" if x.get_positive() == True else "Não",
@@ -186,6 +258,24 @@ def __generate_employee_table(values, analises, clients, client_types):
                       Helper.to_date(x.get_created()))
     
     print(table)
+
+def __get_client(client_id):
+    client = DataContext.get_by_id(int(client_id), CLIENTS)
+    if client == None:
+        return Client(0, "Não Encontrado", "", "", "", "", "", "")
+    return client
+
+def __get_client_type(client_type_id):
+    client_type = DataContext.get_by_id(int(client_type_id), CLIENT_TYPES)
+    if client_type == None:
+        return ClientType(0, "Não Encontrado", "")
+    return client_type
+
+def __get_analysis_type(analysis_type_id):
+    analysis_type = DataContext.get_by_id(int(analysis_type_id), ANALYSIS_TYPE)
+    if analysis_type == None:
+        return AnalysisType(0, "Não Encontrado", "Não Encontrado")
+    return analysis_type
 
 if __name__ == "__main__":
     analysis_report_menu()
