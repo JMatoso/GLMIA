@@ -7,6 +7,7 @@ from repositories.users_repository import users_menu
 from repositories.analysis_repository import analysis_menu
 from repositories.analysis_request_repository import analysis_request_menu
 from repositories.analysis_type_repository import analysis_type_menu
+from repositories.analysis_reports_repository import analysis_report_menu
 
 def load():
     __start()
@@ -37,7 +38,7 @@ def __analysis():
         case "3":
             analysis_request_menu()
         case "4":
-            print("Resultados de Análises")
+           analysis_report_menu()
         case "0":
             print("Voltar!")
         case _:

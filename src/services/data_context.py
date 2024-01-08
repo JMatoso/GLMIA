@@ -79,3 +79,18 @@ class DataContext:
         else:
             print("Confuso\n")
             return "Confuso"
+        
+    @staticmethod
+    def get_positive_report():
+        choice = input("Resultado [P/N] (qualquer outro para inconclusivo): ")
+        choice = choice.upper().strip()
+        
+        if choice == "P":
+            print("Positivo\n")
+            return True
+        elif choice == "N":
+            print("Negativo\n")
+            return False
+        else:
+            print("Inconclusivo\n")
+            return False

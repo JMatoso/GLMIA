@@ -1,8 +1,8 @@
 import random
 from datetime import datetime
 
-class AnalysisRequest:
-    def __init__(self, id, type_analysis_id, client_id, client_type_id, created = datetime.now()):
+class AnalysisReport:
+    def __init__(self, id, type_analysis_id, client_id, client_type_id, description, positive, created = datetime.now()):
         if(id == 0):
             self.id = random.randint(1000, 9999)
         else:
@@ -11,6 +11,8 @@ class AnalysisRequest:
         self.client_id = client_id
         self.client_type_id = client_type_id
         self.created = created
+        self.description = description
+        self.positive = positive
     
     def get_id(self):
         return self.id
@@ -24,6 +26,12 @@ class AnalysisRequest:
     def get_client_type_id(self):
         return self.client_type_id
     
+    def get_description(self):
+        return self.description
+    
+    def get_positive(self):
+        return self.positive
+    
     def get_created(self):
         return self.created
     
@@ -33,6 +41,8 @@ class AnalysisRequest:
             'type_analysis_id': self.type_analysis_id,
             'client_id': self.client_id,
             'client_type_id': self.client_type_id,
+            'description': self.description,
+            'positive': self.positive,
             'created': self.created.isoformat()
         }
         
@@ -43,5 +53,7 @@ class AnalysisRequest:
             data['type_analysis_id'],
             data['client_id'],
             data['client_type_id'],
+            data['description'],
+            data['positive'],
             datetime.fromisoformat(data['created'])
         )
