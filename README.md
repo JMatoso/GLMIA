@@ -9,3 +9,7 @@ Install with `pip` or your favorite PyPI package manager.
 ```sh
 python -m pip install rich
 ```
+
+```sh
+pip install reportlab
+```
